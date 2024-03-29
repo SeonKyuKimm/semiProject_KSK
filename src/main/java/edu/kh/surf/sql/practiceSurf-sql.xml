@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+	<entry key="selectAll">
+	SELECT
+	PRACTICE_NO, PRACTICE_TITLE, PRACTICE_MEMO, PRACTICE_DATE	
+	FROM PRACTICE
+	NATURAL JOIN MEMBER
+	WHERE MEMBER_NO = ?
+	</entry>
+	
+	<entry key="insert">
+		INSERT INTO "PRACTICE"
+		VALUES (SEQ_PRACTICE_NO.NEXTVAL, ?, ?, DEFAULT, DEFAULT, ?)
+	</entry>
+	
+	<entry key="delete">
+		UPDATE "PRACTICE" SET
+		PRACTICE_COMPLETE = 'Y'
+		WHERE PRACTICE_NO = ?
+	</entry>
+	
+	<entry key="selectOne">
+		SELECT PRACTICE_NO, PRACTICE_TITLE, PRACTICE_MEMO, PRACTICE_DATE
+		FROM "PRACTICE"
+		WHERE MEMBER_NO = ?
+		AND PRACTICE_COMPLETE = 'N'
+		AND PRACTICE_NO = ?
+	</entry>
+		
+	<entry key="update">
+		UPDATE PRACTICE SET
+		PRACTICE_TITLE = ? ,
+		PRACTICE_MEMO =?
+		WHERE PRACTICE_NO = ?
+		AND MEMBER_NO = ?
+	</entry>
+	
+</properties>
